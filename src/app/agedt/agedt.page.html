@@ -1,0 +1,53 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title align="center">Agenda Edicion</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <br>
+    <ion-item>
+        <ion-label>DIA DE INICO</ion-label>
+        <ion-datetime displayFormat="MM DD YY" placeholder="Select Date"></ion-datetime>
+    </ion-item>
+    <br><br>
+    <ion-item>
+        <ion-label position="floating">Titulo</ion-label>
+        <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="floating">Descriptcion</ion-label>
+        <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label>Hora de inicio</ion-label>
+        <ion-datetime displayFormat="HH:mm"></ion-datetime>
+    </ion-item>
+    <ion-item>
+        <ion-label>Hora de final</ion-label>
+        <ion-datetime displayFormat="HH:mm">
+        </ion-datetime>
+    </ion-item>
+    <ion-item>
+        Recordar 10 minutos antes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <ion-checkbox checked="false"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+        Repeticion &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <ion-checkbox checked="false"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+        Categoria &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <ion-checkbox checked="false"></ion-checkbox>
+    </ion-item>
+    <ion-fab vertical="bottom" horizontal="start">
+        <ion-fab-button routerLink="/agenda">
+            <ion-icon name="close-outline"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+    <ion-fab vertical="bottom" horizontal="end">
+        <ion-fab-button routerLink="/agenda">
+            <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+</ion-content>

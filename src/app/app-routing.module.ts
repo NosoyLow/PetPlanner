@@ -10,7 +10,15 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
+  },  {
+    path: 'agenda',
+    loadChildren: () => import('./agenda/agenda.module').then( m => m.AgendaPageModule)
   },
+  {
+    path: 'agedt',
+    loadChildren: () => import('./agedt/agedt.module').then( m => m.AgedtPageModule)
+  },
+
 ];
 
 @NgModule({
