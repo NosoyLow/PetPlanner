@@ -1,0 +1,7 @@
+{
+  "name": "PetPlanner",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
