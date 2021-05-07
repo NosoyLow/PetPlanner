@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { AgendaPage } from './agenda.page';
+import { AgendaViewComponent } from './agenda-view.component';
 
-describe('AgendaPage', () => {
-  let component: AgendaPage;
-  let fixture: ComponentFixture<AgendaPage>;
+describe('AgendaViewComponent', () => {
+  let component: AgendaViewComponent;
+  let fixture: ComponentFixture<AgendaViewComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ AgendaPage ],
+      declarations: [ AgendaViewComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(AgendaPage);
+    fixture = TestBed.createComponent(AgendaViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

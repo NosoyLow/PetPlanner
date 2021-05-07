@@ -1,24 +1,17 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AppComponent } from './app.component';
+import { LoginComponent } from './components/auth/login/login.component';
 
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    path:'AppComponent',
+    component: AppComponent
   },
   {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
-  },  {
-    path: 'agenda',
-    loadChildren: () => import('./agenda/agenda.module').then( m => m.AgendaPageModule)
-  },
-  {
-    path: 'agedt',
-    loadChildren: () => import('./agedt/agedt.module').then( m => m.AgedtPageModule)
-  },
-
+    path:'login',
+    component: LoginComponent
+  }
 ];
 
 @NgModule({
