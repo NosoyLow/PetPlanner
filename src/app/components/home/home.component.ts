@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  albumes: string [] = ['Firulais', 'Mika', 'Perse', 'Mini', 'Gumaro', 'Dorado'];
+
+  constructor() {}
 
   ngOnInit() {}
 

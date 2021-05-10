@@ -16,12 +16,13 @@ export class PhotoService {
   private PHOTO_STORAGE: string = "photos";
   private platform: Platform;
 
-  constructor(platform: Platform) {
+  constructor(platform: Platform,) {
     this.platform = platform;
   }
 
-  public async addNewToGallery() {
+  public async addNewToGallery(nombreAlbum: string) {
     // Take a photo
+    this.PHOTO_STORAGE = nombreAlbum; //CAMBIA EL ALBUM FILES-------------------------
     const capturedPhoto = await Camera.getPhoto({
       resultType: CameraResultType.Uri, // file-based data; provides best performance
       source: CameraSource.Camera, // automatically take a new photo with the camera
@@ -29,7 +30,7 @@ export class PhotoService {
     });
     
     // Save the picture and add it to photo collection
-    const savedImageFile = await this.savePicture(capturedPhoto);
+    const savedImageFile = await this.savePicture(capturedPhoto, nombreAlbum);
     this.photos.unshift(savedImageFile);
 
     Storage.set({
@@ -40,12 +41,12 @@ export class PhotoService {
   }
 
   // Save picture to file on device
-  private async savePicture(cameraPhoto: CameraPhoto) {
+  private async savePicture(cameraPhoto: CameraPhoto, nombreAlbum: string) {
+    this.PHOTO_STORAGE = nombreAlbum; //CAMBIA EL ALBUM FILES-------------------------
     // Convert photo to base64 format, required by Filesystem API to save
     const base64Data = await this.readAsBase64(cameraPhoto);
-
     // Write the file to the data directory
-    const fileName = new Date().getTime() + '.jpeg';
+    const fileName = nombreAlbum +':'+ new Date().getTime() + '.jpeg';
     const savedFile = await Filesystem.writeFile({
       path: fileName,
       data: base64Data,
@@ -98,7 +99,8 @@ export class PhotoService {
     reader.readAsDataURL(blob);
   });
   
-  public async loadSaved() {
+  public async loadSaved(nombreAlbum: string) {
+    this.PHOTO_STORAGE = nombreAlbum; //CAMBIA EL ALBUM FILES-------------------------
     // Retrieve cached photo array data
     const photoList = await Storage.get({ key: this.PHOTO_STORAGE });
     this.photos = JSON.parse(photoList.value) || [];
@@ -120,7 +122,8 @@ export class PhotoService {
     }
   }
 
-  public async deletePicture(photo: Photo, position: number) {
+  public async deletePicture(photo: Photo, position: number, nombreAlbum: string) {
+    this.PHOTO_STORAGE = nombreAlbum; //CAMBIA EL ALBUM FILES-------------------------
     // Remove this photo from the Photos reference data array
     this.photos.splice(position, 1);
   
@@ -140,4 +143,5 @@ export class PhotoService {
     });
   }
 
+  
 }

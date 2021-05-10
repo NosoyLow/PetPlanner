@@ -15,15 +15,16 @@ import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
 //Components
 import { SharedModule } from './components/shared/shared.module';
 import { LoginComponent } from './components/auth/login/login.component';
-import { CameraComponent } from './components/camera/camera.component';
 import { HomeComponent } from './components/home/home.component';
+import { AlbumComponent } from './components/album/album.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    CameraComponent,
+    HomeComponent,
+    AlbumComponent,
     HomeComponent
   ],
   entryComponents: [],
