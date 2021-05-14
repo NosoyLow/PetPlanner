@@ -1,0 +1,62 @@
+<ion-menu side="start" menuId="first" contentId="main">
+  <ion-content>
+
+    <ion-list lines="none">
+      <ion-list-header>
+        Menú
+      </ion-list-header>
+      <ion-menu-toggle autoHide="false" *ngFor="let p of appPages; let i = index">
+        <ion-item [routerLink]="p.url" routerLinkActive="selected" routerDirection="root" detail="false">
+          <ion-icon slot="start" [name]="p.icon + '-outline'"></ion-icon>
+          <ion-label>
+            {{p.title}}
+          </ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+
+    <ion-list lines="none">
+      <ion-list-header>
+        Mascotas
+      </ion-list-header>
+      <ion-menu-toggle autoHide="false">
+        <ion-item button routerLink="./perdidos-view" detail="false">
+          <ion-icon slot="start" name="hammer"></ion-icon>
+          <ion-label>Mascotas Perdidas</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle autoHide="false">
+        <ion-item button routerLink="./adopcion-view" detail="false">
+          <ion-icon slot="start" name="hammer"></ion-icon>
+          <ion-label>Mascotas en Adopción</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+
+    <ion-list lines="none">
+      <ion-list-header>
+        Opciones
+      </ion-list-header>
+      <ion-item>
+        <ion-icon slot="start" name="moon-outline"></ion-icon>
+        <ion-label>
+          Dark Mode
+        </ion-label>
+        <ion-toggle [ngModel]="darkMode" (ionChange)="cambio()"></ion-toggle>
+      </ion-item>
+      <ion-menu-toggle autoHide="false">
+        <ion-item button (click)="openTutorial()" detail="false">
+          <ion-icon slot="start" name="hammer"></ion-icon>
+          <ion-label>Tutorial</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle autoHide="false">
+        <ion-item button (click)="openTutorial()" detail="false">
+          <ion-icon slot="start" name="add-circle"></ion-icon>
+          <ion-label>Agregar Álbum</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+
+  </ion-content>
+</ion-menu>

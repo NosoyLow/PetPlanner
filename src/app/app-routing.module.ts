@@ -1,30 +1,43 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
-import { AlbumComponent } from './components/album/album.component';
-import { LoginComponent } from './components/auth/login/login.component';
-import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
   {
-    path:'AppComponent',
-    component: AppComponent
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
   },
   {
-    path:'login',
-    component: LoginComponent
+    path: 'home',
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
   {
-    path:'home',
-    component: HomeComponent
+    path: 'buscador',
+    loadChildren: () => import('./pages/buscador/buscador.module').then( m => m.BuscadorPageModule)
   },
   {
-    path:'home/:id',
-    component: AlbumComponent
+    path: 'agenda-view',
+    loadChildren: () => import('./pages/agenda/agenda-view/agenda-view.module').then( m => m.AgendaViewPageModule)
   },
   {
-    path: '**',
-    redirectTo: 'home'
+    path: 'agenda-edit',
+    loadChildren: () => import('./pages/agenda/agenda-edit/agenda-edit.module').then( m => m.AgendaEditPageModule)
+  },
+  {
+    path: 'perdidos-view',
+    loadChildren: () => import('./pages/foros/perdidos/perdidos-view/perdidos-view.module').then( m => m.PerdidosViewPageModule)
+  },
+  {
+    path: 'perdidos-form',
+    loadChildren: () => import('./pages/foros/perdidos/perdidos-form/perdidos-form.module').then( m => m.PerdidosFormPageModule)
+  },
+  {
+    path: 'adopcion-view',
+    loadChildren: () => import('./pages/foros/adopcion/adopcion-view/adopcion-view.module').then( m => m.AdopcionViewPageModule)
+  },
+  {
+    path: 'adopcion-form',
+    loadChildren: () => import('./pages/foros/adopcion/adopcion-form/adopcion-form.module').then( m => m.AdopcionFormPageModule)
   }
 ];
 

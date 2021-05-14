@@ -1,0 +1,20 @@
+<ion-toolbar>
+
+  <ion-buttons slot="start">
+    <ion-button (click)="openFirst()">
+      <ion-icon slot="icon-only" name="menu"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+  <ion-title>PetsPlanner</ion-title>
+  <ion-searchbar *ngIf="showSearchbar" showCancelButton="always" [(ngModel)]="queryText" (ionChange)="updateSchedule()" (ionCancel)="showSearchbar = false" placeholder="Search"></ion-searchbar>
+  <ion-buttons slot="end">
+      <ion-button *ngIf="!showSearchbar" (click)="showSearchbar = true">
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+      <ion-button *ngIf="!showSearchbar" (click)="presentFilter()">
+        <span *ngIf="ios">Filter</span>
+          <ion-icon slot="icon-only" name="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    
+</ion-toolbar>
