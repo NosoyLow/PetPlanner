@@ -1,16 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { HomePage } from './home.page';
-import { AlbumPage } from '../albumes/album/album.page';
+import { AlbumPage } from './album.page';
+import { AlbumSlidesPage } from '../album-slides/album-slides.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: HomePage,
-  },
-  {
-    path: ':id',
     component: AlbumPage
   }
 ];
@@ -19,4 +15,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class HomePageRoutingModule {}
+export class AlbumPageRoutingModule {}

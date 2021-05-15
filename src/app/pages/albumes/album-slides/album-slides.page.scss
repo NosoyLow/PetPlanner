@@ -1,0 +1,17 @@
+ion-content {
+    --background: transparent;
+}
+ 
+ion-footer {
+    margin-bottom: 10px;
+}
+ 
+ion-slides {
+    height: 100%;
+}
+
+.transparent-modal {
+    .modal-wrapper {
+        --background: rgba(44, 39, 45, 0.2);
+    }
+}

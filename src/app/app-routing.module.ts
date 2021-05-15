@@ -38,6 +38,10 @@ const routes: Routes = [
   {
     path: 'adopcion-form',
     loadChildren: () => import('./pages/foros/adopcion/adopcion-form/adopcion-form.module').then( m => m.AdopcionFormPageModule)
+  },
+  {
+    path: 'slides',
+    loadChildren: () => import('./pages/albumes/album-slides/album-slides.module').then( m => m.AlbumSlidesPageModule)
   }
 ];
 

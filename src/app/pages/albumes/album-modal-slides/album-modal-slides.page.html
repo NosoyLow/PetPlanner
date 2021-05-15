@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="close()" routerLink="/">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Slides</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div *ngIf="zoomActive" class="backdrop" [style.opacity]="zoomScale"></div>
+  <ion-slides [options]="sliderZoomOpts">
+    <ion-slide *ngFor="let photo of Photos; index as position" >
+      <img [src]="photo.webviewPath">
+    </ion-slide>
+  </ion-slides>
+</ion-content>

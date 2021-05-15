@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { MenuComponent } from './components/menu/menu.component';
+import { AlbumModalSlidesPageModule } from './pages/albumes/album-modal-slides/album-modal-slides.module';
 
 
 @NgModule({
@@ -17,7 +18,7 @@ import { MenuComponent } from './components/menu/menu.component';
     MenuComponent
   ],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule, AlbumModalSlidesPageModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })

@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AlbumPageRoutingModule } from './album-routing.module';
+import { AlbumModalZoomPageRoutingModule } from './album-modal-zoom-routing.module';
 
-import { AlbumPage } from './album.page';
+import { AlbumModalZoomPage } from './album-modal-zoom.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AlbumPageRoutingModule
+    AlbumModalZoomPageRoutingModule
   ],
-  declarations: [AlbumPage]
+  declarations: [AlbumModalZoomPage]
 })
-export class AlbumPageModule {}
+export class AlbumModalZoomPageModule {}

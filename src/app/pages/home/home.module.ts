@@ -8,7 +8,7 @@ import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
 import { ToolbarComponent } from 'src/app/components/toolbar/toolbar.component';
-import { AlbumPage } from '../album/album.page';
+import { AlbumPage } from '../albumes/album/album.page';
 
 @NgModule({
   imports: [
