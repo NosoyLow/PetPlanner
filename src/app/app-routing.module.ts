@@ -42,7 +42,12 @@ const routes: Routes = [
   {
     path: 'slides',
     loadChildren: () => import('./pages/albumes/album-slides/album-slides.module').then( m => m.AlbumSlidesPageModule)
+  },
+  {
+    path: 'agenda-info',
+    loadChildren: () => import('./pages/agenda/agenda-info/agenda-info.module').then( m => m.AgendaInfoPageModule)
   }
+
 ];
 
 @NgModule({

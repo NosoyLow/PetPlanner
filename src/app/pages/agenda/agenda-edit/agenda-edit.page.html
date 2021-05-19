@@ -1,9 +1,55 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>agendaEdit</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title align="center">Agenda Edit</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+
+
+    <form #formulario="ngForm" (ngSubmit)="onSubmit(formulario)">
+
+        <ion-item>
+            <ion-label position="floating">Dia de inicio</ion-label>
+            <ion-datetime displayFormat="MM/DD/YYYY" min="2021-01-01" max="2050-12-31" name="dia_inicio" [(ngModel)]="agenda.dia_inicio" required></ion-datetime>
+        </ion-item>
+        <ion-item>
+            <ion-label>Titulo</ion-label>
+            <ion-input type="text" name="titulo" [(ngModel)]="agenda.titulo" required></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Descripcion</ion-label>
+            <ion-input type="text" name="descripcion" [(ngModel)]="agenda.descripcion" required></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Hora inical</ion-label>
+            <ion-datetime displayFormat="h:mm a" name="hora_inicio" [(ngModel)]="agenda.hora_inicio" required></ion-datetime>
+        </ion-item>
+        <ion-item>
+            <ion-label>Hora final</ion-label>
+            <ion-datetime displayFormat="h:mm a" name="hora_final" [(ngModel)]="agenda.hora_final" required></ion-datetime>
+        </ion-item>
+        <ion-item>
+            <ion-label>Recordar 10 minutos antes</ion-label>
+            <ion-checkbox disabled="false" name="recodar" [(ngModel)]="agenda.recordar"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+            <ion-label>Repetir</ion-label>
+            <ion-select multiple="true" name="repetir" [(ngModel)]="agenda.repetir">
+                <ion-select-option value="Lunes">Lunes</ion-select-option>
+                <ion-select-option value="Martes">Martes</ion-select-option>
+                <ion-select-option value="Miercoles">Miercoles</ion-select-option>
+                <ion-select-option value="Jueves">Jueves</ion-select-option>
+                <ion-select-option value="Viernes">Viernes</ion-select-option>
+                <ion-select-option value="Sabado">Sabado</ion-select-option>
+                <ion-select-option value="Domingo">Domingo</ion-select-option>
+            </ion-select>
+        </ion-item>
+
+
+        <ion-button [disabled]="formulario.invalid" type="submit" expand="block" routerLink="/agenda-view">add</ion-button>
+        <ion-button type="submit" expand="block" routerLink="/agenda-view">close</ion-button>
+    </form>
 
 </ion-content>

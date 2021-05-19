@@ -1,9 +1,28 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>agendaView</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button (click)="openFirst()">
+                <ion-icon slot="icon-only" name="menu"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>Agenda</ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content>
 
+<ion-content>
+    <ion-card routerLink="/agenda-info">
+        <ion-card-header>
+            <ion-card-subtitle>Lunes, 17 de mayo del 2021</ion-card-subtitle>
+            <ion-card-title>
+                Dar paseo
+            </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>Descripcion</ion-card-content>
+    </ion-card>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button routerLink="/agenda-edit">
+            <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
 </ion-content>
