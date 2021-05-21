@@ -1,21 +1,118 @@
-<ion-header>
-    <ion-toolbar>
-        <ion-buttons slot="start">
-            <ion-button (click)="openFirst()">
-                <ion-icon slot="icon-only" name="menu"></ion-icon>
-            </ion-button>
-        </ion-buttons>
-        <ion-title>Agenda</ion-title>
-    </ion-toolbar>
-</ion-header>
+<h3> Agenda
+    <div class="clearfix"></div>
+</h3>
+
+    <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Titulo</th>
+              <th>Descripcion</th>
+              <th>Repetir recordatorio</th>
+              <th>Empieza en</th>
+              <th>Termina en</th>
+              <th>Eliminar</th>
+            </tr>
+          </thead>
+      
+          <tbody>
+            <tr *ngFor="let event of events">
+              <td>
+                <input
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="event.title"
+                  (keyup)="refresh.next()"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="event.description"
+                  (keyup)="refresh.next()"
+                />
+              </td>
+              <td>
+                    <ion-checkbox disabled="false" name="recodar" [(ngModel)]="event.repeat"></ion-checkbox>  
+                
+              </td>
+              <td>
+                <input
+                  class="form-control"
+                  type="text"
+                  mwlFlatpickr
+                  [(ngModel)]="event.start"
+                  (ngModelChange)="refresh.next()"
+                  [altInput]="true"
+                  [convertModelValue]="true"
+                  [enableTime]="true"
+                  dateFormat="Y-m-dTH:i"
+                  altFormat="F j, Y H:i"
+                  placeholder="Not set"
+                />
+              </td>
+              <td>
+                <input
+                  class="form-control"
+                  type="text"
+                  mwlFlatpickr
+                  [(ngModel)]="event.end"
+                  (ngModelChange)="refresh.next()"
+                  [altInput]="true"
+                  [convertModelValue]="true"
+                  [enableTime]="true"
+                  dateFormat="Y-m-dTH:i"
+                  altFormat="F j, Y H:i"
+                  placeholder="Not set"
+                />
+              </td>
+              <td>
+                <button class="btn btn-danger" (click)="deleteEvent(event)">
+                  Eliminar
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <button class="btn btn-primary float-left" (click)="addEvent()">
+        Agregar nuevo
+      </button>
 
 
-<ion-content>
+
+
+<!-- 
+  <ion-content *ngFor="let events of events">
     <ion-card routerLink="/agenda-info">
         <ion-card-header>
-            <ion-card-subtitle>Lunes, 17 de mayo del 2021</ion-card-subtitle>
+            <ion-card-subtitle> {{ events.start }}</ion-card-subtitle>
             <ion-card-title>
-                Dar paseo
+                {{ events.title }}
+            </ion-card-title>
+            
+        </ion-card-header>
+        <ion-card-content> {{ events.description }} </ion-card-content>
+    </ion-card>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button routerLink="/agenda-edit">
+            <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+</ion-content>
+-->
+
+
+
+
+<!-- 
+    <ion-content *ngFor="let events of events">
+    <ion-card routerLink="/agenda-info">
+        <ion-card-header>
+            <ion-card-subtitle> {{ events.start }}</ion-card-subtitle>
+            <ion-card-title>
+                {{ events.title }}
             </ion-card-title>
         </ion-card-header>
         <ion-card-content>Descripcion</ion-card-content>
@@ -26,3 +123,4 @@
         </ion-fab-button>
     </ion-fab>
 </ion-content>
+-->
