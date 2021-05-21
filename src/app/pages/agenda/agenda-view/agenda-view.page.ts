@@ -54,8 +54,6 @@ export class AgendaViewPage implements OnInit {
   TemplateRef<any>;
 
   
-  //@ViewChild(MenuController) menu: MenuController;
-  
 
 
   CalendarView = CalendarView;
@@ -68,27 +66,7 @@ export class AgendaViewPage implements OnInit {
     event: MyEvent;
   }
 
-// acciones en calendar
-/*
-actions: CalendarEventAction[] = [
-  {
-    label: '<i class="fas fa-fw fa-pencil-alt"></i>',
-    a11yLabel: 'Edit',
-    onClick: ({ event }: { event: MyEvent }): void => {
-      this.handleEvent('Edited', event);
-    },
-  },
-  {
-    label: '<i class="fas fa-fw fa-trash-alt"></i>',
-    a11yLabel: 'Delete',
-    onClick: ({ event }: { event: MyEvent }): void => {
-      this.events = this.events.filter((iEvent) => iEvent !== event);
-      this.handleEvent('Deleted', event);
-    },
-  },
-];
-*/
-  //constructor(private menu: MenuController) { }
+
 
  constructor(private modal: NgbModal) {} //pendiente
 
@@ -101,7 +79,6 @@ actions: CalendarEventAction[] = [
     this.modal.open(this.modalContent, {size: 'lg'});
   }
   
-// eventos
 
 events: MyEvent[] = [
   
@@ -120,36 +97,9 @@ events: MyEvent[] = [
     },
     draggable: true,
   },
-  /*
-  {
-    start: startOfDay(new Date()),
-    title: 'An event with no end date',
-    color: colors.yellow,
-    actions: this.actions,
-  },
-  {
-    start: subDays(endOfMonth(new Date()), 3),
-    end: addDays(endOfMonth(new Date()), 3),
-    title: 'A long event that spans 2 months',
-    color: colors.blue,
-    allDay: true,
-  },
-  {
-    start: addHours(startOfDay(new Date()), 2),
-    end: addHours(new Date(), 2),
-    title: 'A draggable and resizable event',
-    color: colors.yellow,
-    actions: this.actions,
-    resizable: {
-      beforeStart: true,
-      afterEnd: true,
-    },
-    draggable: true,
-  },
-  */
+
 ];
 
-// fin eventos
 
  addEvent(): void { // realizar
    this.events = [
@@ -169,10 +119,5 @@ events: MyEvent[] = [
  this.events = this.events.filter((event) => event !== eventToDelete);
 }
 
-
- // openFirst() {
-   // this.menu.enable(true, 'first');
-  //  this.menu.open('first');
-//  }
 
 }

@@ -34,39 +34,12 @@
                 />
               </td>
               <td>
-                    <ion-checkbox disabled="false" name="recodar" [(ngModel)]="event.repeat"></ion-checkbox>  
-                
+                    <ion-checkbox disabled="false" name="recodar" [(ngModel)]="event.repeat"></ion-checkbox>
               </td>
               <td>
-                <input
-                  class="form-control"
-                  type="text"
-                  mwlFlatpickr
-                  [(ngModel)]="event.start"
-                  (ngModelChange)="refresh.next()"
-                  [altInput]="true"
-                  [convertModelValue]="true"
-                  [enableTime]="true"
-                  dateFormat="Y-m-dTH:i"
-                  altFormat="F j, Y H:i"
-                  placeholder="Not set"
-                />
-              </td>
+                <ion-datetime placeholder="Select" displayFormat="h:mm a" name="hora_inicio" [(ngModel)]="event.start" required></ion-datetime>
               <td>
-                <input
-                  class="form-control"
-                  type="text"
-                  mwlFlatpickr
-                  [(ngModel)]="event.end"
-                  (ngModelChange)="refresh.next()"
-                  [altInput]="true"
-                  [convertModelValue]="true"
-                  [enableTime]="true"
-                  dateFormat="Y-m-dTH:i"
-                  altFormat="F j, Y H:i"
-                  placeholder="Not set"
-                />
-              </td>
+                <ion-datetime placeholder="Select" displayFormat="h:mm a" name="hora_final" [(ngModel)]="event.end" required></ion-datetime>
               <td>
                 <button class="btn btn-danger" (click)="deleteEvent(event)">
                   Eliminar
@@ -79,48 +52,3 @@
       <button class="btn btn-primary float-left" (click)="addEvent()">
         Agregar nuevo
       </button>
-
-
-
-
-<!-- 
-  <ion-content *ngFor="let events of events">
-    <ion-card routerLink="/agenda-info">
-        <ion-card-header>
-            <ion-card-subtitle> {{ events.start }}</ion-card-subtitle>
-            <ion-card-title>
-                {{ events.title }}
-            </ion-card-title>
-            
-        </ion-card-header>
-        <ion-card-content> {{ events.description }} </ion-card-content>
-    </ion-card>
-    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-        <ion-fab-button routerLink="/agenda-edit">
-            <ion-icon name="add"></ion-icon>
-        </ion-fab-button>
-    </ion-fab>
-</ion-content>
--->
-
-
-
-
-<!-- 
-    <ion-content *ngFor="let events of events">
-    <ion-card routerLink="/agenda-info">
-        <ion-card-header>
-            <ion-card-subtitle> {{ events.start }}</ion-card-subtitle>
-            <ion-card-title>
-                {{ events.title }}
-            </ion-card-title>
-        </ion-card-header>
-        <ion-card-content>Descripcion</ion-card-content>
-    </ion-card>
-    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-        <ion-fab-button routerLink="/agenda-edit">
-            <ion-icon name="add"></ion-icon>
-        </ion-fab-button>
-    </ion-fab>
-</ion-content>
--->
