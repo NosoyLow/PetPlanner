@@ -7,7 +7,7 @@
     </ion-buttons>
     <ion-title>{{nombreAlbum}}</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="cambiarSlides()">
+      <ion-button (click)="openSlides()">
           <ion-icon slot="icon-only" name="film"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -19,6 +19,7 @@
     <ion-row>
       <ion-col size="6" *ngFor="let photo of photoService.photos; index as position">
         <ion-img [src]="photo.webviewPath" 
+                 tappable
                  (click)="showActionSheet(photo, position)">
         </ion-img>
       </ion-col>

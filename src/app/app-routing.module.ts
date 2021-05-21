@@ -40,14 +40,17 @@ const routes: Routes = [
     loadChildren: () => import('./pages/foros/adopcion/adopcion-form/adopcion-form.module').then( m => m.AdopcionFormPageModule)
   },
   {
-    path: 'slides',
-    loadChildren: () => import('./pages/albumes/album-slides/album-slides.module').then( m => m.AlbumSlidesPageModule)
-  },
-  {
     path: 'agenda-info',
     loadChildren: () => import('./pages/agenda/agenda-info/agenda-info.module').then( m => m.AgendaInfoPageModule)
+  },
+  {
+    path: 'album-modal-zoom',
+    loadChildren: () => import('./pages/albumes/album-modal-zoom/album-modal-zoom.module').then( m => m.AlbumModalZoomPageModule)
+  },
+  {
+    path: 'album-modal-slides',
+    loadChildren: () => import('./pages/albumes/album-modal-slides/album-modal-slides.module').then( m => m.AlbumModalSlidesPageModule)
   }
-
 ];
 
 @NgModule({

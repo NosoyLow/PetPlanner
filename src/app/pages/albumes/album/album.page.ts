@@ -1,11 +1,10 @@
-import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ChangeDetectorRef, OnInit } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 import { ActionSheetController, MenuController, ModalController } from '@ionic/angular';
 import { PhotoService } from 'src/app/services/photos/photos.service';
 import { Photo } from '../../../interfaces/photo';
 import { AlbumModalZoomPage } from '../album-modal-zoom/album-modal-zoom.page';
 import { AlbumModalSlidesPage } from '../album-modal-slides/album-modal-slides.page';
-import { IonSlides } from '@ionic/angular';
 
 @Component({
   selector: 'app-album',
@@ -13,22 +12,22 @@ import { IonSlides } from '@ionic/angular';
   styleUrls: ['./album.page.scss'],
 })
 export class AlbumPage implements OnInit {
-  @ViewChild(IonSlides) slides: IonSlides;
   //Establece en que album estamos
   nombreAlbum: string;
   Fotos: Photo [] = [];
+  
   sliderOpts = {
     zoom: false,
     slidesPerView: 1.5,
-    centeredSlides: true,
-    spaceBetween: 20
-  }
+    spaceBetween: 20,
+    centeredSlides: true
+  };
 
   constructor(public photoService: PhotoService, 
               public actionSheetController: ActionSheetController,
               private activatedRoute: ActivatedRoute,
-              private modalController: ModalController,
               private menu: MenuController,
+              private modalController: ModalController,
               private changeDetectorRef: ChangeDetectorRef
   ){
     this.nombreAlbum = this.activatedRoute.snapshot.params.id;
@@ -84,7 +83,7 @@ export class AlbumPage implements OnInit {
           icon: 'move',
           role: 'open',
           handler: () => {
-            this.openZoom(position);
+            this.openZoom(photo);
           }
         },{
           text: 'Borrar',
@@ -98,7 +97,7 @@ export class AlbumPage implements OnInit {
           icon: 'close',
           role: 'cancel',
           handler: () => {
-          // Nothing to do, action sheet is automatically closed
+          // Cierra el modal, no hace nada
           } 
         }
       ]

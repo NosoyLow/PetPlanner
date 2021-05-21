@@ -1,5 +1,5 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { NavParams, ModalController, IonSlides } from '@ionic/angular';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { ModalController, IonSlides } from '@ionic/angular';
 
 @Component({
   selector: 'app-album-modal-zoom',
@@ -8,9 +8,11 @@ import { NavParams, ModalController, IonSlides } from '@ionic/angular';
 })
 export class AlbumModalZoomPage implements OnInit {
   
+  // Parámetros
   @ViewChild(IonSlides) slides: IonSlides;
   @Input('img')img: any;
- 
+  
+  // Define si hay zoom
   sliderOpts = {
     zoom: true
   };
@@ -19,10 +21,12 @@ export class AlbumModalZoomPage implements OnInit {
  
   ngOnInit() { }
  
+  // Actualiza el slide
   ionViewDidEnter(){
-    this.slides.update();
+      this.slides.update();
   }
- 
+  
+  // Crea el zoom
   async zoom(zoomIn: boolean) {
     const slider = await this.slides.getSwiper();
     const zoom = slider.zoom;

@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AlbumPage } from './album.page';
-import { AlbumSlidesPage } from '../album-slides/album-slides.page';
 
 const routes: Routes = [
   {

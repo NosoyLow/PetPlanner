@@ -1,7 +1,6 @@
-import { ChangeDetectorRef, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef} from '@angular/core';
 import { PhotoService } from 'src/app/services/photos/photos.service';
 import { IonSlides, ModalController } from '@ionic/angular';
-import { Photo } from '../../../interfaces/photo';
 
 @Component({
   selector: 'app-album-modal-slides',
@@ -9,37 +8,29 @@ import { Photo } from '../../../interfaces/photo';
   styleUrls: ['./album-modal-slides.page.scss'],
 })
 export class AlbumModalSlidesPage implements OnInit {
-  //Establece en que album estamos
-  nombreAlbum: string;
-  //@ViewChild(IonSlides) slides: IonSlides;
-  //@Input() Photos: Photo;
-
-
-  constructor() //public photoService: PhotoService,
-               //private modalController: ModalController,
-               //private changeDetectorRef: ChangeDetectorRef ) {
-  {}
-
-  //  Carga las fotos
-   ngOnInit(){
-    //await this.photoService.loadSaved();
-   //await this.photoService.loadSaved(this.nombreAlbum);
+  
+  constructor ( public photoService: PhotoService,
+                private modalController: ModalController,
+                private changeDetectorRef: ChangeDetectorRef ) {
   }
-
-  /*//  Cierra el Ion-Modal
+  
+  ngOnInit(){
+  }
+  
+  // Cierra el modal
   close() {
     this.modalController.dismiss();
   }
 
-  //  Funcion para realizar el zoom
+  //Establece los parámetros
   zoomActive = false;
   zoomScale = 1;
-
+  
   sliderZoomOpts = {
-    allowSlidePrev: true,
-    allowSlideNext: true,
+    allowSlidePrev: false,
+    allowSlideNext: false,
     zoom: {
-      maxRatio: 2.5
+      maxRatio: 5
     },
     on: {
       zoomChange: (scale, imageEl, slideEl) => {        
@@ -49,5 +40,24 @@ export class AlbumModalSlidesPage implements OnInit {
       }
     }
   }
-  */
+  
+
+  async touchEnd(zoomslides: IonSlides, card) {
+    // Restablece el zoom
+    const slider = await zoomslides.getSwiper();
+    const zoom = slider.zoom;
+    zoom.out();
+  
+    // Devuelve la tarjeta a la normalidad
+    card.el.style['z-index'] = 9;
+  
+    this.zoomActive = false;
+    this.changeDetectorRef.detectChanges();
+  }
+  
+  touchStart(card) {
+    // Hacer que la tarjeta aparezca sobre el fondo
+    card.el.style['z-index'] = 11;
+  }
+
 }

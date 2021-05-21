@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button (click)="close()" routerLink="/">
+      <ion-button (click)="close()">
         <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -9,11 +9,16 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <div *ngIf="zoomActive" class="backdrop" [style.opacity]="zoomScale"></div>
-  <ion-slides [options]="sliderZoomOpts">
-    <ion-slide *ngFor="let photo of Photos; index as position" >
-      <img [src]="photo.webviewPath">
-    </ion-slide>
-  </ion-slides>
+<ion-content>
+    <div *ngIf="zoomActive" class="backdrop" [style.opacity]="zoomScale"></div>
+    <ion-card *ngFor="let photo of Photos; index as position" class="image-card" #card>
+        <ion-slides class="image-slide" [options]="sliderZoomOpts" #zoomslides>
+            <ion-slide>
+                <div class="swiper-zoom-container" (touchstart)="touchStart(card)"
+                    (touchend)="touchEnd(zoomslides, card)">
+                    <img [src]="photo.webviewPath">
+                </div>
+            </ion-slide>
+        </ion-slides>
+    </ion-card>
 </ion-content>
