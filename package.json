@@ -34,14 +34,15 @@
         "angular-calendar": "^0.28.24",
         "angular-draggable-droppable": "^4.6.0",
         "angular-resizable-element": "^3.3.5",
+        "bootstrap": "^4.0.0",
         "calendar-utils": "^0.8.4",
         "cordova-sqlite-storage": "^6.0.0",
         "core-js": "^3.12.1",
         "date-fns": "^2.21.3",
         "ionic-img-viewer": "^2.9.0",
+        "ngx-autosize": "^1.8.4",
         "uk.co.workingedge.cordova.plugin.sqliteporter": "^1.1.1",
-        "zone.js": "^0.10.3",
-        "bootstrap": "^4.0.0"
+        "zone.js": "^0.10.3"
     },
     "devDependencies": {
         "@angular-devkit/build-angular": "^0.1102.13",
