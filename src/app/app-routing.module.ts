@@ -54,7 +54,11 @@ const routes: Routes = [
   {
     path: 'chat',
     loadChildren: () => import('./pages/chat/chat.module').then( m => m.ChatPageModule)
+  },  {
+    path: 'gifs',
+    loadChildren: () => import('./pages/gifs/gifs.module').then( m => m.GifsPageModule)
   }
+
 
 ];
 
