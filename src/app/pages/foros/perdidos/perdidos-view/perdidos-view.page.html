@@ -1,9 +1,28 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>perdidosView</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button (click)="openFirst()">
+                <ion-icon slot="icon-only" name="menu"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>Mascotas perdidas</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+    <ion-card *ngFor="let cont of per">
+        <ion-card-header>
+            <ion-card-subtitle>{{cont.titulo}}</ion-card-subtitle>
+            <ion-card-title>
+                {{cont.imagen}}
+            </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>{{cont.descripcion}}</ion-card-content>
+    </ion-card>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button routerLink="/perdidos-form">
+            <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+    <ion-button routerLink="/chat">hola</ion-button>
 </ion-content>

@@ -50,7 +50,12 @@ const routes: Routes = [
   {
     path: 'album-modal-slides',
     loadChildren: () => import('./pages/albumes/album-modal-slides/album-modal-slides.module').then( m => m.AlbumModalSlidesPageModule)
+  },
+  {
+    path: 'chat',
+    loadChildren: () => import('./pages/chat/chat.module').then( m => m.ChatPageModule)
   }
+
 ];
 
 @NgModule({
