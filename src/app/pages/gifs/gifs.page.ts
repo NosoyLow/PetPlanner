@@ -1,15 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { MenuController } from '@ionic/angular';
+import { GifsService } from '../../services/gifs/gifs.service';
 
 @Component({
   selector: 'app-gifs',
   templateUrl: './gifs.page.html',
   styleUrls: ['./gifs.page.scss'],
 })
-export class GifsPage implements OnInit {
+export class GifsPage {
+  
+  constructor(private menu: MenuController,
+              private gifsService: GifsService) { }
 
-  constructor() { }
+  //  Abre el menú
+  openFirst() {
+    this.menu.enable(true, 'first');
+    this.menu.open('first');
+  }
 
-  ngOnInit() {
+  //  Busca Gifs
+  buscar(event){
+    this.gifsService.buscarGifs (event.detail.value);
   }
 
 }

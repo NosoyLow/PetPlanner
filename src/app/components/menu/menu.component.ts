@@ -21,6 +21,11 @@ export class MenuComponent implements OnInit {
       title: 'Buscador',
       url: './buscador',
       icon: 'search'
+    },
+    {
+      title: 'Gifs',
+      url: './gifs',
+      icon: 'paw'
     }
   ];
 

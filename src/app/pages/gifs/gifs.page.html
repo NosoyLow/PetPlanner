@@ -1,9 +1,24 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>gifs</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="openFirst()">
+        <ion-icon slot="icon-only" name="menu"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Gifs</ion-title>
   </ion-toolbar>
+  <ion-searchbar (ionChange)="buscar($event)"></ion-searchbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-card *ngFor="let resultado of gifsService.resultados; index as position">
+    <img [src]="resultado.images.downsized_medium.url" alt="gif.title" class="card-img-top">
+    <ion-card-content>
+      <ion-buttons color="light">  
+        <ion-button>
+            <ion-icon slot="icon-only" name="download"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
