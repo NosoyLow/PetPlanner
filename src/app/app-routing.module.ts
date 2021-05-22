@@ -12,8 +12,12 @@ const routes: Routes = [
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
   {
-    path: 'buscador',
-    loadChildren: () => import('./pages/buscador/buscador.module').then( m => m.BuscadorPageModule)
+    path: 'productos',
+    loadChildren: () => import('./pages/productos/productos.module').then( m => m.ProductosPageModule)
+  },
+  {
+    path: 'gifs',
+    loadChildren: () => import('./pages/gifs/gifs.module').then( m => m.GifsPageModule)
   },
   {
     path: 'agenda-view',
@@ -50,15 +54,7 @@ const routes: Routes = [
   {
     path: 'album-modal-slides',
     loadChildren: () => import('./pages/albumes/album-modal-slides/album-modal-slides.module').then( m => m.AlbumModalSlidesPageModule)
-  },
-  {
-    path: 'chat',
-    loadChildren: () => import('./pages/chat/chat.module').then( m => m.ChatPageModule)
-  },  {
-    path: 'gifs',
-    loadChildren: () => import('./pages/gifs/gifs.module').then( m => m.GifsPageModule)
   }
-
 
 ];
 

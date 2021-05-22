@@ -18,8 +18,8 @@ export class MenuComponent implements OnInit {
       icon: 'people'
     },
     {
-      title: 'Buscador',
-      url: './buscador',
+      title: 'Productos',
+      url: './productos',
       icon: 'search'
     },
     {
