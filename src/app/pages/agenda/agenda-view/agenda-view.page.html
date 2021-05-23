@@ -1,54 +1,55 @@
-<h3> Agenda
-    <div class="clearfix"></div>
-</h3>
 
-    <div class="table-responsive">
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>Titulo</th>
-              <th>Descripcion</th>
-              <th>Repetir recordatorio</th>
-              <th>Empieza en</th>
-              <th>Termina en</th>
-              <th>Eliminar</th>
-            </tr>
-          </thead>
-      
-          <tbody>
-            <tr *ngFor="let event of events">
-              <td>
+<h1 class="display-4">Agenda
+  <div class="clearfix"></div>
+</h1>
+
+      <ion-content>
+
+        
+          <div class="card" style="width: 18rem;" *ngFor="let event of events">
+            <div class="card-body">
+              
+              <h5 class="card-title"> Titulo
                 <input
-                  type="text"
-                  class="form-control"
-                  [(ngModel)]="event.title"
-                  (keyup)="refresh.next()"
-                />
-              </td>
-              <td>
+                      type="text"
+                      class="form-control"
+                      [(ngModel)]="event.title"
+                      (keyup)="refresh.next()"
+                    />
+              </h5>
+              <p class="card-text"> Descripcion
                 <input
-                  type="text"
-                  class="form-control"
-                  [(ngModel)]="event.description"
-                  (keyup)="refresh.next()"
-                />
-              </td>
-              <td>
-                    <ion-checkbox disabled="false" name="recodar" [(ngModel)]="event.repeat"></ion-checkbox>
-              </td>
-              <td>
+                      type="text"
+                      class="form-control"
+                      [(ngModel)]="event.description"
+                      (keyup)="refresh.next()"
+                    />
+              </p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"> Fecha inicial
                 <ion-datetime placeholder="Select" displayFormat="h:mm a" name="hora_inicio" [(ngModel)]="event.start" required></ion-datetime>
-              <td>
+              </li>
+              <li class="list-group-item"> Fecha final
                 <ion-datetime placeholder="Select" displayFormat="h:mm a" name="hora_final" [(ngModel)]="event.end" required></ion-datetime>
-              <td>
-                <button class="btn btn-danger" (click)="deleteEvent(event)">
-                  Eliminar
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+              </li>
+              <li class="list-group-item"><ion-checkbox disabled="false" name="recodar" [(ngModel)]="event.repeat"></ion-checkbox> Repetir</li>
+            </ul>
+            <div class="card-body">
+              <button class="btn btn-danger" (click)="deleteEvent(event)">
+                Eliminar
+              </button>
+               &nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+           
+          </div>
+       
+
+        
+     </ion-content>
+      
+      
+
       <button class="btn btn-primary float-left" (click)="addEvent()">
         Agregar nuevo
       </button>
