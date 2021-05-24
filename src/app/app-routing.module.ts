@@ -54,7 +54,12 @@ const routes: Routes = [
   {
     path: 'album-modal-slides',
     loadChildren: () => import('./pages/albumes/album-modal-slides/album-modal-slides.module').then( m => m.AlbumModalSlidesPageModule)
+  },  {
+    path: 'agenda-crear',
+    loadChildren: () => import('./pages/agenda/agenda-crear/agenda-crear.module').then( m => m.AgendaCrearPageModule)
   }
+
+
 
 ];
 

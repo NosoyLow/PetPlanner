@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="close()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Nuevo Evento</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-item>
+      <ion-label>Fecha</ion-label>
+      <ion-datetime 
+        displayFormat="DD/MM/YYYY"
+        max="2050"
+        min="2021"
+        [(ngModel)]="fecha">
+      </ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Hora</ion-label>
+      <ion-datetime 
+        displayFormat="hh/mm/A"
+        [(ngModel)]="hora">
+      </ion-datetime>
+    </ion-item>
+    <form (ngSubmit)="onSubmit(formInformacion.value)" [formGroup]="formInformacion">
+      <ion-item>
+        <ion-label position="floating">Titulo</ion-label>
+        <ion-input formControlName="titulo"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Descripción</ion-label>
+        <ion-input formControlName="descripcion"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Mascota</ion-label>
+        <ion-input formControlName="mascota"></ion-input>
+      </ion-item>
+      <ion-button [disabled]="!formInformacion.valid" color="primary">
+        Crear asunto
+      </ion-button>
+    </form>
+ 
+</ion-content>

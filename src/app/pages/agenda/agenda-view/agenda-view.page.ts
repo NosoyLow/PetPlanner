@@ -1,46 +1,6 @@
-import { Component, Input, NgModule, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
-import { MenuController, PopoverController } from '@ionic/angular';
-import { AgendaEditPage } from '../agenda-edit/agenda-edit.page';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import {
-  CalendarEvent,
-  CalendarEventAction,
-  CalendarEventTimesChangedEvent,
-  CalendarView,
-} from 'angular-calendar';
-
-import {
-  startOfDay,
-  endOfDay,
-  subDays,
-  addDays,
-  endOfMonth,
-  isSameDay,
-  isSameMonth,
-  addHours,
-} from 'date-fns';
-
-// colores
-
-const colors: any = { // inecesary
-  red: {
-    primary: '#ad2121',
-    secondary: '#FAE3E3',
-  },
-  blue: {
-    primary: '#1e90ff',
-    secondary: '#D1E8FF',
-  },
-  yellow: {
-    primary: '#e3bc08',
-    secondary: '#FDF1BA',
-  },
-};
-
-interface MyEvent extends CalendarEvent { // Customizando para agregar otra variable tipo string a los eventos.
-  description: string;
-  repeat: boolean;
-} 
+import { Component, OnInit } from '@angular/core';
+import { MenuController, ModalController } from '@ionic/angular';
+import { AgendaCrearPage } from '../agenda-crear/agenda-crear.page';
 
 @Component({
   selector: 'app-agenda-view',
@@ -49,75 +9,29 @@ interface MyEvent extends CalendarEvent { // Customizando para agregar otra vari
 })
 
 export class AgendaViewPage implements OnInit {
+ 
+  constructor(private menu: MenuController,
+              private modalController: ModalController){ console.log("holaaa")}
 
-  @ViewChild('modalContent', { static: true }) modalContent:
-  TemplateRef<any>;
-
-  
+  ngOnInit() {}
 
 
-  CalendarView = CalendarView;
-  titulos:string; 
-  
-  viewDate: Date = new Date();
-
-  modalData: {
-    action: string;
-    event: MyEvent;
+  //  Abre el menú
+  openFirst() {
+    this.menu.enable(true, 'first');
+    this.menu.open('first');
   }
 
+  async crearSesion() {
+    const modal = await this.modalController.create({
+      component: AgendaCrearPage,
+      cssClass: 'my-custom-class',
+      componentProps: {
 
-
- constructor(private modal: NgbModal) {} //pendiente
-
-  ngOnInit() {
-    console.log(this.titulos);
+      }
+    });
+    modal.onDidDismiss().then(data => {})
+    return await modal.present();
   }
-
-  handleEvent(action: string, event: MyEvent): void {
-    this.modalData = { event, action };
-    this.modal.open(this.modalContent, {size: 'lg'});
-  }
-  
-
-events: MyEvent[] = [
-  
-  {
-    start: subDays(startOfDay(new Date()), 1),
-    end: addDays(new Date(), 1),
-    title: 'A 3 day event',
-    description: 'Agenda de mi primer perro',
-    repeat: true,
-    color: colors.red,
-    //actions: this.actions,
-    allDay: true,
-    resizable: {
-      beforeStart: true,
-      afterEnd: true,
-    },
-    draggable: true,
-  },
-
-];
-
-
- addEvent(): void { // realizar
-   this.events = [
-     ...this.events,
-     {
-       title: 'Nuevo evento',
-       description: 'Nueva descripcion',
-       repeat: true,
-       start: startOfDay(new Date()),
-       end: endOfDay(new Date()),
-       color: colors.red,
-     },
-   ];
- }
-
-   deleteEvent(eventToDelete: MyEvent) {
- this.events = this.events.filter((event) => event !== eventToDelete);
-}
-
 
 }
