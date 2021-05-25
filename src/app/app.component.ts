@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Data } from '@angular/router';
+import { Platform } from '@ionic/angular';
+import { DatabaseService } from './services/database.service';
 
 @Component({
   selector: 'app-root',
@@ -7,17 +10,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   
-  constructor() {
-    this.checkDarkTheme();
-  }
+  constructor(private platform: Platform,
+              private databaseService: DatabaseService)
+  {
+    platform.ready().then ( async e => {
+      await this.databaseService.openDB();
+      await this.databaseService.configBD();
+    })
 
-  checkDarkTheme(){
-    // Use matchMedia to check the user preference
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-    // Add or remove the "dark" class based on if the media query matches
-    if (prefersDark.matches){
-        document.body.classList.toggle('dark');
-    }
   }
 
 }

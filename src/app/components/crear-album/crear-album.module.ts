@@ -4,9 +4,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AgendaCrearPageRoutingModule } from './agenda-crear-routing.module';
+import { CrearAlbumPageRoutingModule } from './crear-album-routing.module';
 
-import { AgendaCrearPage } from './agenda-crear.page';
+import { CrearAlbumPage } from './crear-album.page';
 
 @NgModule({
   imports: [
@@ -14,8 +14,8 @@ import { AgendaCrearPage } from './agenda-crear.page';
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    AgendaCrearPageRoutingModule
+    CrearAlbumPageRoutingModule
   ],
-  declarations: [AgendaCrearPage]
+  declarations: [CrearAlbumPage]
 })
-export class AgendaCrearPageModule {}
+export class CrearAlbumPageModule {}

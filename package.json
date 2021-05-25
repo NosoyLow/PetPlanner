@@ -26,7 +26,7 @@
         "@capacitor/android": "^2.4.7",
         "@capacitor/core": "2.4.7",
         "@ionic-native/core": "^5.32.1",
-        "@ionic-native/sqlite": "^5.32.1",
+        "@ionic-native/sqlite": "^5.33.0",
         "@ionic-native/sqlite-porter": "^5.32.1",
         "@ionic/angular": "^5.5.2",
         "@ionic/lab": "^3.2.10",

@@ -1,6 +1,6 @@
-import { Component, ChangeDetectorRef, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
-import { ActionSheetController, MenuController, ModalController } from '@ionic/angular';
+import { ActionSheetController, AlertController, MenuController, ModalController } from '@ionic/angular';
 import { PhotoService } from 'src/app/services/photos/photos.service';
 import { Photo } from '../../../interfaces/photo';
 import { AlbumModalZoomPage } from '../album-modal-zoom/album-modal-zoom.page';
@@ -28,7 +28,7 @@ export class AlbumPage implements OnInit {
               private activatedRoute: ActivatedRoute,
               private menu: MenuController,
               private modalController: ModalController,
-              private changeDetectorRef: ChangeDetectorRef
+              public alertController: AlertController
   ){
     this.nombreAlbum = this.activatedRoute.snapshot.params.id;
   }
@@ -103,6 +103,30 @@ export class AlbumPage implements OnInit {
       ]
     });
     await actionSheet.present();
+  }
+
+  async borrarAlbum() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Borrar Album',
+      message: '¿Desea <strong>Borrar</strong> el álbum?',
+      buttons: [
+        {
+          text: 'BORRAR EL ALBUM',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            //console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'CANCELAR',
+          handler: () => {
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
 }

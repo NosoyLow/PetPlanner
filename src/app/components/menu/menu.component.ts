@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { CrearAlbumPage } from '../crear-album/crear-album.page';
 
 @Component({
   selector: 'app-menu',
@@ -31,17 +33,20 @@ export class MenuComponent implements OnInit {
 
   darkMode: boolean = true;
 
-  constructor() {
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-    this.darkMode = prefersDark.matches;
+  constructor(private modalController: ModalController) {
   }
 
   ngOnInit() {}
 
-  cambio(){
-    this.darkMode = !this.darkMode;
-    document.body.classList.toggle ('dark');
+  //  Modal para crearAlbum
+  async crearAlbumModal() {
+    const modal = await this.modalController.create({
+      component: CrearAlbumPage,
+      cssClass: 'my-custom-class',
+      componentProps: {
+      }
+    });
+    return await modal.present();
   }
-
 
 }

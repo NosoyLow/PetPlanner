@@ -57,6 +57,10 @@ const routes: Routes = [
   },  {
     path: 'agenda-crear',
     loadChildren: () => import('./pages/agenda/agenda-crear/agenda-crear.module').then( m => m.AgendaCrearPageModule)
+  },
+  {
+    path: 'crear-album',
+    loadChildren: () => import('./components/crear-album/crear-album.module').then( m => m.CrearAlbumPageModule)
   }
 
 
