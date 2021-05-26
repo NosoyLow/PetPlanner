@@ -23,7 +23,7 @@ export class PhotoService {
     this.platform = platform;
   }
 
-  //  AGREGA FOTO A GALERIA
+  //  AGREGA FOTO A GALERIA DESDE CÁMARA
   public async addNewToGallery(nombreAlbum: string) {
     // Take a photo
     this.PHOTO_STORAGE = nombreAlbum; //CAMBIA EL ALBUM FILES-------------------------
@@ -43,6 +43,27 @@ export class PhotoService {
     });
 
   }
+
+    //  AGREGA FOTO A GALERIA DESDE ALMACENAMIENTO
+    public async addNewToGalleryAlmacenamiento(nombreAlbum: string) {
+      // Take a photo
+      this.PHOTO_STORAGE = nombreAlbum; //CAMBIA EL ALBUM FILES-------------------------
+      const capturedPhoto = await Camera.getPhoto({
+        resultType: CameraResultType.Uri, // file-based data; provides best performance
+        source: CameraSource.Photos, // automatically take a new photo with the camera
+        quality: 100 // highest quality (0 to 100)
+      });
+  
+      // Save the picture and add it to photo collection
+      const savedImageFile = await this.savePicture(capturedPhoto, nombreAlbum);
+      this.photos.unshift(savedImageFile);
+  
+      Storage.set({
+        key: this.PHOTO_STORAGE,
+        value: JSON.stringify(this.photos)
+      });
+  
+    }
 
   // GUARDA LA FOTO EN FILESTORAGE
   private async savePicture(cameraPhoto: CameraPhoto, nombreAlbum: string) {
