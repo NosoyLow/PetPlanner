@@ -34,7 +34,7 @@ export class AgendaCrearPage implements OnInit {
   }
 
 
-
+  //  Formulario reactivo para validar la entrada de datos
   ngOnInit() {
 
     if (this.evento)
@@ -73,6 +73,7 @@ export class AgendaCrearPage implements OnInit {
     })
   }
 
+  //  Acepta el formulario
   async onSubmit(values: Evento) {
     try {
       if (!this.editing)
@@ -91,9 +92,6 @@ export class AgendaCrearPage implements OnInit {
   close() {
     this.modalController.dismiss();
   }
-
-
-
 
 
 }

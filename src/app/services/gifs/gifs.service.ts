@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class GifsService {
   
-  //  API KEY ESCONDIDA
+  //  API KEY ESCONDIDA EN ENVIRONMENT
   private apikey = environment.gifApiKey;
 
   private servicioUrl : string = 'https://api.giphy.com/v1/gifs'

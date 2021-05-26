@@ -12,6 +12,7 @@ export class AppComponent {
   
   databaseReady = false
   
+  //  VERIFICA QUE LA BASE DE DATOS HAYA CARGADO PARA INICIAR LA APLICACIÓN
   constructor(private platform: Platform,
               private databaseService: DatabaseService)
   {

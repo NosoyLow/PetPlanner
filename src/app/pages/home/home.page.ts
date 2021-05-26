@@ -29,18 +29,19 @@ export class HomePage implements OnInit, OnDestroy {
   ) {
   }
   
+  // DESTRUYE LA SUSCRIPCIÓN
   ngOnDestroy(): void {
     if (this.subscription)
       this.subscription.unsubscribe()
   }
 
   ngOnInit() {
-
     this.subscription = this.databsService.albumes.asObservable().subscribe(e => {
       this.getAlbums(e)
     })
   }
 
+  //  OBTIENE LOS ALBUMES
   async getAlbums(e: string[]) {
     this.albumes = []
     for (let album of e) {
@@ -52,6 +53,7 @@ export class HomePage implements OnInit, OnDestroy {
     }
   }
 
+  //  ABRE EL MENÚ
   openFirst() {
     this.menu.enable(true, 'first');
     this.menu.open('first');

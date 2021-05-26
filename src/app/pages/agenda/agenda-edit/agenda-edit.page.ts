@@ -9,7 +9,7 @@ import {NgForm} from '@angular/forms';
 })
 export class AgendaEditPage implements OnInit {
   
-
+  //  Define la agenda
   agenda={
     dia_inicio:'',
     titulo:'',

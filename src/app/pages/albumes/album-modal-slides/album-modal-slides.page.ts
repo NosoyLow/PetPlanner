@@ -26,6 +26,7 @@ export class AlbumModalSlidesPage implements OnInit {
   zoomActive = false;
   zoomScale = 1;
   
+  //  ESTABLECE LOS VALORES DEL ZOOM
   sliderZoomOpts = {
     allowSlidePrev: false,
     allowSlideNext: false,
@@ -41,7 +42,7 @@ export class AlbumModalSlidesPage implements OnInit {
     }
   }
   
-
+  //  VUELVE A LA NORMALIDAD LA FOTO
   async touchEnd(zoomslides: IonSlides, card) {
     // Restablece el zoom
     const slider = await zoomslides.getSwiper();
@@ -55,6 +56,7 @@ export class AlbumModalSlidesPage implements OnInit {
     this.changeDetectorRef.detectChanges();
   }
   
+  //  APLICA EL ZOOM
   touchStart(card) {
     // Hacer que la tarjeta aparezca sobre el fondo
     card.el.style['z-index'] = 11;

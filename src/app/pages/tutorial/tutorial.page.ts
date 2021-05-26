@@ -10,14 +10,11 @@ export class TutorialPage implements OnInit {
 
   constructor(private modalController: ModalController) { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  // Cierra el modal
+  close() {
+    this.modalController.dismiss();
   }
 
-
-
-
-    // Cierra el modal
-    close() {
-      this.modalController.dismiss();
-    }
 }

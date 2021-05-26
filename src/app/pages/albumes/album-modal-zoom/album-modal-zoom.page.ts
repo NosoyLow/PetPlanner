@@ -33,6 +33,7 @@ export class AlbumModalZoomPage implements OnInit {
     zoomIn ? zoom.in() : zoom.out();
   }
  
+  // Cierra el modal
   close() {
     this.modalController.dismiss();
   }

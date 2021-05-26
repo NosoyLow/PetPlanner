@@ -12,6 +12,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
   {
+    path: 'album/:id',
+    loadChildren: () => import('./pages/albumes/album/album.module').then( m => m.AlbumPageModule)
+  },
+  {
     path: 'gifs',
     loadChildren: () => import('./pages/gifs/gifs.module').then( m => m.GifsPageModule)
   },
@@ -22,10 +26,6 @@ const routes: Routes = [
   {
     path: 'agenda-edit',
     loadChildren: () => import('./pages/agenda/agenda-edit/agenda-edit.module').then( m => m.AgendaEditPageModule)
-  },
-  {
-    path: 'agenda-info',
-    loadChildren: () => import('./pages/agenda/agenda-info/agenda-info.module').then( m => m.AgendaInfoPageModule)
   },
   {
     path: 'album-modal-zoom',
@@ -42,7 +42,8 @@ const routes: Routes = [
   {
     path: 'crear-album',
     loadChildren: () => import('./components/crear-album/crear-album.module').then( m => m.CrearAlbumPageModule)
-  },  {
+  },
+  {
     path: 'tutorial',
     loadChildren: () => import('./pages/tutorial/tutorial.module').then( m => m.TutorialPageModule)
   }

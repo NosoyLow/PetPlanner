@@ -17,9 +17,11 @@ export class AgendaViewPage implements OnInit, OnDestroy {
   subscription: Subscription
 
   constructor(private menu: MenuController,
-    private modalController: ModalController,
-    private databaseService: DatabaseService
-  ) { console.log("holaaa") }
+              private modalController: ModalController,
+              private databaseService: DatabaseService
+  ) { }
+
+  //  Destruye la suscripción
   ngOnDestroy(): void {
     if (this.subscription)
       this.subscription.unsubscribe()
@@ -40,6 +42,7 @@ export class AgendaViewPage implements OnInit, OnDestroy {
     this.menu.open('first');
   }
 
+  //  Crea un nuevo evento con modalController
   async crearSesion() {
     const modal = await this.modalController.create({
       component: AgendaCrearPage,
@@ -50,7 +53,7 @@ export class AgendaViewPage implements OnInit, OnDestroy {
     return await modal.present();
   }
 
-
+  //  Edita el evento con modalController
   async editar(evento: Evento) {
     console.log("ID",evento.id)
     const modal = await this.modalController.create({
@@ -64,6 +67,7 @@ export class AgendaViewPage implements OnInit, OnDestroy {
     return await modal.present();
   }
 
+  //  Llama al servicio de base de datos y borra el evento
   eliminar(evento: Evento) {
     this.databaseService.eliminarEvento(evento)
   }

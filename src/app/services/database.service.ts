@@ -64,6 +64,7 @@ export class DatabaseService {
     this.eventosCreados.next(this.eventos)
   }
 
+  //  AGREGA UN EVENTO
   async addEvento(evento: Evento) {
     await this.db.executeSql(`
     INSERT INTO agenda (
@@ -85,6 +86,7 @@ export class DatabaseService {
     await this.getEventos()
   }
 
+  //  EDITA EL EVENTO SELECCIONADO
   async editarEvento(evento: Evento) {
     await this.db.executeSql(`
       UPDATE agenda 
@@ -99,12 +101,13 @@ export class DatabaseService {
     await this.getEventos()
   }
 
+  //  ELIMINA EL EVENTO SELECCIONADO 
   async eliminarEvento(evento: Evento) {
     await this.db.executeSql(`DELETE FROM agenda WHERE id = ${evento.id}`, [])
     await this.getEventos()
   }
 
-  // ELIMINAR MASCOTAS
+  // ELIMINAR MASCOTAS 
   async deleteMascotas(nombre) {
     await this.db.executeSql(`DELETE FROM albumes WHERE nombreAlbum = '${nombre}'`, [])
     await this.getMascotas()

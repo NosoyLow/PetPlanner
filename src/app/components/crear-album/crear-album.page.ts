@@ -29,6 +29,7 @@ export class CrearAlbumPage implements OnInit {
     })
   }
 
+  //  Acepta el formulario
   async submit(values: any) {
     try {
       

@@ -17,6 +17,7 @@ export class AlbumPage implements OnInit {
   nombreAlbum: string;
   Fotos: Photo[] = [];
 
+    // DEFINE LAS CARACTERISTICAS DEL ZOOM
   sliderOpts = {
     zoom: false,
     slidesPerView: 1.5,
@@ -108,6 +109,7 @@ export class AlbumPage implements OnInit {
     await actionSheet.present();
   }
 
+  //  BORRA EL ALBUM, UTILIZA ALERTCONTROLLER
   async borrarAlbum() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',

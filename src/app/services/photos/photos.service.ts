@@ -23,6 +23,7 @@ export class PhotoService {
     this.platform = platform;
   }
 
+  //  AGREGA FOTO A GALERIA
   public async addNewToGallery(nombreAlbum: string) {
     // Take a photo
     this.PHOTO_STORAGE = nombreAlbum; //CAMBIA EL ALBUM FILES-------------------------
@@ -43,7 +44,7 @@ export class PhotoService {
 
   }
 
-  // Save picture to file on device
+  // GUARDA LA FOTO EN FILESTORAGE
   private async savePicture(cameraPhoto: CameraPhoto, nombreAlbum: string) {
     this.PHOTO_STORAGE = nombreAlbum; //CAMBIA EL ALBUM FILES-------------------------
     // Convert photo to base64 format, required by Filesystem API to save
@@ -74,6 +75,7 @@ export class PhotoService {
     }
   }
 
+  //  LEE BASE64
   private async readAsBase64(cameraPhoto: CameraPhoto) {
     // "hybrid" will detect Cordova or Capacitor
     if (this.platform.is('hybrid')) {
@@ -93,6 +95,7 @@ export class PhotoService {
     }
   }
 
+  //  CONVIERTE A BASE64
   convertBlobToBase64 = (blob: Blob) => new Promise((resolve, reject) => {
     const reader = new FileReader;
     reader.onerror = reject;
@@ -102,8 +105,9 @@ export class PhotoService {
     reader.readAsDataURL(blob);
   });
 
+  //  CARGA LAS FOTOS GUARDADAS EN FILESTORAGE
   public async loadSaved(nombreAlbum: string) {
-    this.PHOTO_STORAGE = nombreAlbum; //CAMBIA EL ALBUM FILES-------------------------
+    this.PHOTO_STORAGE = nombreAlbum; //CAMBIA EL ALBUM FILES
     // Retrieve cached photo array data
     const photoList = await Storage.get({ key: this.PHOTO_STORAGE });
     this.photos = JSON.parse(photoList.value) || [];
@@ -125,8 +129,9 @@ export class PhotoService {
     }
   }
 
+  //  OBTIENE LA PRIMERA FOTO
   public async getFirstPhoto(nombreAlbum: string): Promise<Photo | null> {
-    this.PHOTO_STORAGE = nombreAlbum; //CAMBIA EL ALBUM FILES-------------------------
+    this.PHOTO_STORAGE = nombreAlbum; //CAMBIA EL ALBUM FILES
     // Retrieve cached photo array data
     const photoList = await Storage.get({ key: this.PHOTO_STORAGE });
     const photos = JSON.parse(photoList.value) || [];
@@ -135,8 +140,9 @@ export class PhotoService {
 
   }
 
+  //  BORRA LA FOTO DE FILESTORAGE
   public async deletePicture(photo: Photo, position: number, nombreAlbum: string) {
-    this.PHOTO_STORAGE = nombreAlbum; //CAMBIA EL ALBUM FILES-------------------------
+    this.PHOTO_STORAGE = nombreAlbum; //CAMBIA EL ALBUM FILES
     // Remove this photo from the Photos reference data array
     this.photos.splice(position, 1);
 
