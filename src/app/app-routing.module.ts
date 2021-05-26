@@ -12,10 +12,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
   {
-    path: 'productos',
-    loadChildren: () => import('./pages/productos/productos.module').then( m => m.ProductosPageModule)
-  },
-  {
     path: 'gifs',
     loadChildren: () => import('./pages/gifs/gifs.module').then( m => m.GifsPageModule)
   },
@@ -28,22 +24,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/agenda/agenda-edit/agenda-edit.module').then( m => m.AgendaEditPageModule)
   },
   {
-    path: 'perdidos-view',
-    loadChildren: () => import('./pages/foros/perdidos/perdidos-view/perdidos-view.module').then( m => m.PerdidosViewPageModule)
-  },
-  {
-    path: 'perdidos-form',
-    loadChildren: () => import('./pages/foros/perdidos/perdidos-form/perdidos-form.module').then( m => m.PerdidosFormPageModule)
-  },
-  {
-    path: 'adopcion-view',
-    loadChildren: () => import('./pages/foros/adopcion/adopcion-view/adopcion-view.module').then( m => m.AdopcionViewPageModule)
-  },
-  {
-    path: 'adopcion-form',
-    loadChildren: () => import('./pages/foros/adopcion/adopcion-form/adopcion-form.module').then( m => m.AdopcionFormPageModule)
-  },
-  {
     path: 'agenda-info',
     loadChildren: () => import('./pages/agenda/agenda-info/agenda-info.module').then( m => m.AgendaInfoPageModule)
   },
@@ -54,17 +34,20 @@ const routes: Routes = [
   {
     path: 'album-modal-slides',
     loadChildren: () => import('./pages/albumes/album-modal-slides/album-modal-slides.module').then( m => m.AlbumModalSlidesPageModule)
-  },  {
+  },
+  {
     path: 'agenda-crear',
     loadChildren: () => import('./pages/agenda/agenda-crear/agenda-crear.module').then( m => m.AgendaCrearPageModule)
   },
   {
     path: 'crear-album',
     loadChildren: () => import('./components/crear-album/crear-album.module').then( m => m.CrearAlbumPageModule)
+  },  {
+    path: 'tutorial',
+    loadChildren: () => import('./pages/tutorial/tutorial.module').then( m => m.TutorialPageModule)
   }
 
-
-
+  
 ];
 
 @NgModule({

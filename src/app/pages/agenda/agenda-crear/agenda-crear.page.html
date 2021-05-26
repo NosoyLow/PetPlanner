@@ -10,24 +10,26 @@
 </ion-header>
 
 <ion-content>
-
-    <ion-item>
-      <ion-label>Fecha</ion-label>
-      <ion-datetime 
-        displayFormat="DD/MM/YYYY"
-        max="2050"
-        min="2021"
-        [(ngModel)]="fecha">
-      </ion-datetime>
-    </ion-item>
-    <ion-item>
-      <ion-label>Hora</ion-label>
-      <ion-datetime 
-        displayFormat="hh/mm/A"
-        [(ngModel)]="hora">
-      </ion-datetime>
-    </ion-item>
-    <form (ngSubmit)="onSubmit(formInformacion.value)" [formGroup]="formInformacion">
+  <div class="content">
+    <form
+      (ngSubmit)="onSubmit(formInformacion.value)"
+      [formGroup]="formInformacion"
+    >
+      <ion-item>
+        <ion-label>Fecha</ion-label>
+        <ion-datetime
+          displayFormat="DD/MM/YYYY"
+          max="2050"
+          min="2021"
+          formControlName="fecha"
+        >
+        </ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>Hora</ion-label>
+        <ion-datetime displayFormat="hh/mm/A" formControlName="hora">
+        </ion-datetime>
+      </ion-item>
       <ion-item>
         <ion-label position="floating">Titulo</ion-label>
         <ion-input formControlName="titulo"></ion-input>
@@ -38,11 +40,17 @@
       </ion-item>
       <ion-item>
         <ion-label position="floating">Mascota</ion-label>
-        <ion-input formControlName="mascota"></ion-input>
+        <ion-input formControlName="Mascota"></ion-input>
       </ion-item>
-      <ion-button class="Boton" [disabled]="!formInformacion.valid" color="primary">
-        Crear asunto
+      <ion-button
+        expand="block"
+        type="submit"
+        class="Boton"
+        [disabled]="!formInformacion.valid"
+        color="primary"
+      >
+        {{editing ? 'Editar' : 'Crear' }} asunto
       </ion-button>
     </form>
- 
+  </div>
 </ion-content>

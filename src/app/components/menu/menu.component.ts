@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { CrearAlbumPage } from '../crear-album/crear-album.page';
+import { TutorialPage } from '../../pages/tutorial/tutorial.page';
 
 @Component({
   selector: 'app-menu',
@@ -17,24 +18,11 @@ export class MenuComponent implements OnInit {
     {
       title: 'Agenda',
       url: './agenda-view',
-      icon: 'people'
-    },
-    {
-      title: 'Productos',
-      url: './productos',
-      icon: 'search'
-    },
-    {
-      title: 'Gifs',
-      url: './gifs',
-      icon: 'paw'
+      icon: 'calendar'
     }
   ];
 
-  darkMode: boolean = true;
-
-  constructor(private modalController: ModalController) {
-  }
+  constructor(private modalController: ModalController) {}
 
   ngOnInit() {}
 
@@ -42,6 +30,18 @@ export class MenuComponent implements OnInit {
   async crearAlbumModal() {
     const modal = await this.modalController.create({
       component: CrearAlbumPage,
+      cssClass: 'my-custom-class',
+      componentProps: {
+      }
+    });
+    return await modal.present();
+  }
+
+
+  //  Modal Tutorial
+  async openTutorial() {
+    const modal = await this.modalController.create({
+      component: TutorialPage,
       cssClass: 'my-custom-class',
       componentProps: {
       }

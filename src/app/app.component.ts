@@ -10,12 +10,17 @@ import { DatabaseService } from './services/database.service';
 })
 export class AppComponent {
   
+  databaseReady = false
+  
   constructor(private platform: Platform,
               private databaseService: DatabaseService)
   {
     platform.ready().then ( async e => {
       await this.databaseService.openDB();
       await this.databaseService.configBD();
+      await this.databaseService.getMascotas()
+      await this.databaseService.getEventos()
+      this.databaseReady = true
     })
 
   }

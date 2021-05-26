@@ -1,13 +1,16 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Gif, SearchGifsResponse } from 'src/app/interfaces/gifs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GifsService {
   
-  private apikey = "CSY8xdVZrHZuXVPIiN4vGwz23yWl6QLR";
+  //  API KEY ESCONDIDA
+  private apikey = environment.gifApiKey;
+
   private servicioUrl : string = 'https://api.giphy.com/v1/gifs'
   public resultados   : Gif[] = [];
   
@@ -22,7 +25,7 @@ export class GifsService {
     // Realiza la petición
     const params = new HttpParams()
       .set('api_key',this.apikey)
-      .set('limit','50')
+      .set('limit','20')
       .set('q',query);
 
     this.http.get<SearchGifsResponse>(`${this.servicioUrl}/search`,{params})

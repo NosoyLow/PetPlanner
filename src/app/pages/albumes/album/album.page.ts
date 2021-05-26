@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute} from '@angular/router';
-import { ActionSheetController, AlertController, MenuController, ModalController } from '@ionic/angular';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ActionSheetController, AlertController, MenuController, ModalController, NavController } from '@ionic/angular';
 import { PhotoService } from 'src/app/services/photos/photos.service';
 import { Photo } from '../../../interfaces/photo';
 import { AlbumModalZoomPage } from '../album-modal-zoom/album-modal-zoom.page';
 import { AlbumModalSlidesPage } from '../album-modal-slides/album-modal-slides.page';
+import { DatabaseService } from 'src/app/services/database.service';
 
 @Component({
   selector: 'app-album',
@@ -14,8 +15,8 @@ import { AlbumModalSlidesPage } from '../album-modal-slides/album-modal-slides.p
 export class AlbumPage implements OnInit {
   //Establece en que album estamos
   nombreAlbum: string;
-  Fotos: Photo [] = [];
-  
+  Fotos: Photo[] = [];
+
   sliderOpts = {
     zoom: false,
     slidesPerView: 1.5,
@@ -23,18 +24,20 @@ export class AlbumPage implements OnInit {
     centeredSlides: true
   };
 
-  constructor(public photoService: PhotoService, 
-              public actionSheetController: ActionSheetController,
-              private activatedRoute: ActivatedRoute,
-              private menu: MenuController,
-              private modalController: ModalController,
-              public alertController: AlertController
-  ){
+  constructor(public photoService: PhotoService,
+    public actionSheetController: ActionSheetController,
+    private activatedRoute: ActivatedRoute,
+    private menu: MenuController,
+    private modalController: ModalController,
+    public alertController: AlertController,
+    private databaseService: DatabaseService,
+    private navController: NavController
+  ) {
     this.nombreAlbum = this.activatedRoute.snapshot.params.id;
   }
-  
-  async ngOnInit(){
-   await this.photoService.loadSaved(this.nombreAlbum);
+
+  async ngOnInit() {
+    await this.photoService.loadSaved(this.nombreAlbum);
   }
 
   //  Abre el menú
@@ -85,20 +88,20 @@ export class AlbumPage implements OnInit {
           handler: () => {
             this.openZoom(photo);
           }
-        },{
+        }, {
           text: 'Borrar',
           role: 'destructive',
           icon: 'trash',
           handler: () => {
             this.photoService.deletePicture(photo, position, this.nombreAlbum);
-          } 
-        },{
+          }
+        }, {
           text: 'Cancelar',
           icon: 'close',
           role: 'cancel',
           handler: () => {
-          // Cierra el modal, no hace nada
-          } 
+            // Cierra el modal, no hace nada
+          }
         }
       ]
     });
@@ -115,8 +118,10 @@ export class AlbumPage implements OnInit {
           text: 'BORRAR EL ALBUM',
           role: 'cancel',
           cssClass: 'secondary',
-          handler: (blah) => {
-            //console.log('Confirm Cancel: blah');
+          handler: async (blah) => {
+            await this.databaseService.deleteMascotas(this.nombreAlbum)
+            this.navController.navigateRoot("/")
+
           }
         }, {
           text: 'CANCELAR',

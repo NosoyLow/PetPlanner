@@ -15,7 +15,7 @@
     <img [src]="resultado.images.downsized_medium.url" alt="gif.title" class="card-img-top">
     <ion-card-content>
       <ion-buttons color="light">  
-        <ion-button>
+        <ion-button (click)="Download(resultado.images.downsized_medium.url)">
             <ion-icon slot="icon-only" name="download"></ion-icon>
         </ion-button>
       </ion-buttons>

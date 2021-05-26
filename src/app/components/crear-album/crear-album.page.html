@@ -10,20 +10,25 @@
 </ion-header>
 
 <ion-content>
-  <br>
-  <form (ngSubmit)="onSubmit()" [formGroup]="formAlbum">
+  <br />
+  <form (ngSubmit)="submit(formAlbum.value)" [formGroup]="formAlbum">
     <ion-item>
       <ion-label position="floating">Nombre del Álbum</ion-label>
       <ion-input formControlName="nombre"></ion-input>
     </ion-item>
+    <div>
+      <img src="assets/Incognit.png" />
+    </div>
+    <br />
+    <div>
+      <ion-button
+        type="submit"
+        [disabled]="!formAlbum.valid"
+        size="large"
+        color="success"
+      >
+        Crear album
+      </ion-button>
+    </div>
   </form>
-  <div>
-    <img src="assets/Incognit.png">
-  </div>
-  <br>
-  <div>
-    <ion-button [disabled]="!formAlbum.valid"  size="large" color="success">
-      Crear album
-    </ion-button>
-  </div>
 </ion-content>

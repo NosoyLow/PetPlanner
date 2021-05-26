@@ -4,6 +4,12 @@ img {
     margin-left: auto;
     margin-right: auto;
     border-radius: 15%;
+    max-height: 300px;
+    object-fit: cover;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.empty{
+    padding: 16px;
 }

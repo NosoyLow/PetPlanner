@@ -7,7 +7,6 @@ import { IonicModule } from '@ionic/angular';
 import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
-import { ToolbarComponent } from 'src/app/components/toolbar/toolbar.component';
 import { AlbumPage } from '../albumes/album/album.page';
 
 @NgModule({
@@ -19,7 +18,6 @@ import { AlbumPage } from '../albumes/album/album.page';
   ],
   declarations: [
     HomePage,
-    ToolbarComponent,
     AlbumPage
   ]
 })

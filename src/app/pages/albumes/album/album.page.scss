@@ -1,19 +1,18 @@
 .preview-slides {
-    margin-top: 20%;
-    background: #e6e6e6;
-   
-    img {
-        padding-top: 20px;
-        padding-bottom: 20px;
-    }
+  margin-top: 20%;
+  background: #e6e6e6;
+ 
+  img {
+      padding-top: 20px;
+      padding-bottom: 20px;
+  }
 }
 
-  /* DOES NOT WORK - not specific enough */
+
 .alert-wrapper {
-    background: #e5e5e5;
-  }
-  
-  /* Works - pass "my-custom-class" in cssClass to increase specificity */
-  .my-custom-class .alert-wrapper {
-    background: #e5e5e5;
+  background: #e5e5e5;
+}
+
+.my-custom-class .alert-wrapper {
+  background: #e5e5e5;
 }

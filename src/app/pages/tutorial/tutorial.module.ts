@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { PerdidosViewPageRoutingModule } from './perdidos-view-routing.module';
+import { TutorialPageRoutingModule } from './tutorial-routing.module';
 
-import { PerdidosViewPage } from './perdidos-view.page';
+import { TutorialPage } from './tutorial.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PerdidosViewPageRoutingModule
+    TutorialPageRoutingModule
   ],
-  declarations: [PerdidosViewPage]
+  declarations: [TutorialPage]
 })
-export class PerdidosViewPageModule {}
+export class TutorialPageModule {}
