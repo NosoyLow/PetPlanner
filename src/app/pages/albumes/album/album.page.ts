@@ -52,6 +52,11 @@ export class AlbumPage implements OnInit {
     this.photoService.addNewToGallery(this.nombreAlbum);
   }
 
+  //  Agrega foto a galeria desde almacenamiento
+  addPhotoToGalleryAlmacenamiento() {
+    this.photoService.addNewToGalleryAlmacenamiento(this.nombreAlbum);
+  }
+
   //  Modal para ZoomPage
   async openZoom(img) {
     const modal = await this.modalController.create({
